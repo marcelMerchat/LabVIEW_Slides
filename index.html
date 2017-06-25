@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LabVIEW Project Plan</title>
+  <meta charset="utf-8">
+  <meta name="description" content="LabVIEW Project Plan">
+  <meta name="author" content="Marcel Merchat">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>LabVIEW Project Plan</h1>
+    <h2>Exploring Options</h2>
+    <p>Marcel Merchat<br/>RF and Microwave Engineer and Data Scientist</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Purpose of Program (vi)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br><br></p>
+
+<h4>Will this project produce one of the following results?</h4>
+
+<p><br><br></p>
+
+<ul>
+<li>Windows, Linux or similar application?</li>
+<li>Sub-circuit only used within other LabVIEW programs?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Check list for Project</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br><br></p>
+
+<h4>1. Flowchart or description of test</h4>
+
+<h4>2. Measurements and behavior to be controlled</h4>
+
+<h4>3. User controls (variable test conditions, bus addresses)</h4>
+
+<h4>4. Control panel information: indicators, messages, data tables, graphs</h4>
+
+<h4>5. Will data be saved in a database file, spreadsheet, or LabVIEW log file?</h4>
+
+<h4>3. Popup boxes for entering items such as user name, serial numbers.</h4>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Architecture of LabVIEW programs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The common architecture of a LabVIEW program is that of a state machine implemented as a while loop that begins when the program starts and runs until the program terminates. Data is often stored in shift registers at the end of each process loop. </li>
+<li>Within the while loop, the LabVIEW process is defined. The process can include structures such as for loops and if conditions. While loops are possible here, but for loops should be used to avoid unending loop conditions. LabVIEW doesn&#39;t a formal if statement, but If conditions can be implemented as case conditions. </li>
+<li>Processes occur in the order defined by the required inputs. The routing of the error reporting cable also controls the order in which processes occur. Using a sequence structure forces the process order but this should be reserved for cases when a timer is used within a sequence frame. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Input Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br><br></p>
+
+<ul>
+<li>Part of initial planning is to decide what to include on the control panel in the limited space available on it. </li>
+<li>Another way to accomplish control is to import setup information into LabVIEW from a spreadsheet saved in text csv format.</li>
+<li>For example, voltages, timer settings, seeds for random number sequences, and loop cycle counts are the type of things one might adjust and these can be included as control panel elements or imported from a spreadsheet.</li>
+<li>It is far faster to change a value in a spreadsheet than it is to rebuild the LabVIEW project. While space is limited on the control panel, spreadsheets can hold a large amount of information. </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h3>Instrument Control and Measurements</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>The key benefit of LabVIEW is that special tools are provided to control instruments and take measurements. The Standard Commands for Programmable Instrumentation (SCPI) Consortium defines a set of common commands which work from alternative suppliers or even new instruments without having to change the LabVIEW program. It&#39;s also possible to communicate using a simple driver program, but only the commands included by the driver software programmer are available. Another reason to consider SCPI commands is that instrument manuals listing all of the commands are usually available online now and SCPI commands execute faster because the driver program takes time to execute.</p>
+
+<h3>Doing Mathematics with LabVIEW</h3>
+
+<p>The typical things a computer program accomplishes can be done in LabVIEW including mathematics with arrays and matrices and the Windows Command window. The usual comparison operators are available; my programs often compare measurements with specification limits imported from a spreadsheet. The results of the comparison are immediately indicated on the control panel and later included in the saved data file.  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Output Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>A LabVIEW log file is a binary file that can be opened with LabVIEW tools.</li>
+<li>I usually save the data as a delimited text file that can be opened as a spreadsheet such as Excel. Commas are inserted between fields and new line characters mark the end of a spreadsheet row.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Purpose of Program (vi)'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Check list for Project'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Architecture of LabVIEW programs'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Input Data'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Instrument Control and Measurements'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Output Data'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

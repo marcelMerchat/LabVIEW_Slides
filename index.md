@@ -1,0 +1,65 @@
+---
+title       : LabVIEW Project Plan
+subtitle    : Exploring Options
+author      : Marcel Merchat
+job         : RF and Microwave Engineer and Data Scientist
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # {zenburn}
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+---
+
+## Purpose of Program (vi)
+
+<br><br>
+#### Will this project produce one of the following results?
+<br><br>
+
+- Windows, Linux or similar application?
+- Sub-circuit only used within other LabVIEW programs?
+
+---
+
+## Check list for Project
+<br><br>
+#### 1. Flowchart or description of test
+#### 2. Measurements and behavior to be controlled
+#### 3. User controls (variable test conditions, bus addresses)
+#### 4. Control panel information: indicators, messages, data tables, graphs
+#### 5. Will data be saved in a database file, spreadsheet, or LabVIEW log file?
+#### 3. Popup boxes for entering items such as user name, serial numbers.
+
+---
+
+## Architecture of LabVIEW programs
+- The common architecture of a LabVIEW program is that of a state machine implemented as a while loop that begins when the program starts and runs until the program terminates. Data is often stored in shift registers at the end of each process loop. 
+- Within the while loop, the LabVIEW process is defined. The process can include structures such as for loops and if conditions. While loops are possible here, but for loops should be used to avoid unending loop conditions. LabVIEW doesn't a formal if statement, but If conditions can be implemented as case conditions. 
+- Processes occur in the order defined by the required inputs. The routing of the error reporting cable also controls the order in which processes occur. Using a sequence structure forces the process order but this should be reserved for cases when a timer is used within a sequence frame. 
+
+---
+
+## Input Data
+<br><br>
+- Part of initial planning is to decide what to include on the control panel in the limited space available on it. 
+- Another way to accomplish control is to import setup information into LabVIEW from a spreadsheet saved in text csv format.
+- For example, voltages, timer settings, seeds for random number sequences, and loop cycle counts are the type of things one might adjust and these can be included as control panel elements or imported from a spreadsheet.
+- It is far faster to change a value in a spreadsheet than it is to rebuild the LabVIEW project. While space is limited on the control panel, spreadsheets can hold a large amount of information. 
+
+---
+
+### Instrument Control and Measurements
+The key benefit of LabVIEW is that special tools are provided to control instruments and take measurements. The Standard Commands for Programmable Instrumentation (SCPI) Consortium defines a set of common commands which work from alternative suppliers or even new instruments without having to change the LabVIEW program. It's also possible to communicate using a simple driver program, but only the commands included by the driver software programmer are available. Another reason to consider SCPI commands is that instrument manuals listing all of the commands are usually available online now and SCPI commands execute faster because the driver program takes time to execute.
+### Doing Mathematics with LabVIEW
+The typical things a computer program accomplishes can be done in LabVIEW including mathematics with arrays and matrices and the Windows Command window. The usual comparison operators are available; my programs often compare measurements with specification limits imported from a spreadsheet. The results of the comparison are immediately indicated on the control panel and later included in the saved data file.  
+
+---
+
+## Output Data
+
+- A LabVIEW log file is a binary file that can be opened with LabVIEW tools.
+- I usually save the data as a delimited text file that can be opened as a spreadsheet such as Excel. Commas are inserted between fields and new line characters mark the end of a spreadsheet row.
+
+---
