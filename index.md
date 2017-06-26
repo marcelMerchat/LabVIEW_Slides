@@ -5,7 +5,7 @@ author      : Marcel Merchat
 job         : RF and Microwave Engineer and Data Scientist
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # {zenburn}
+hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
@@ -61,5 +61,3 @@ The typical things a computer program accomplishes can be done in LabVIEW includ
 
 - A LabVIEW log file is a binary file that can be opened with LabVIEW tools.
 - I usually save the data as a delimited text file that can be opened as a spreadsheet such as Excel. Commas are inserted between fields and new line characters mark the end of a spreadsheet row.
-
----
